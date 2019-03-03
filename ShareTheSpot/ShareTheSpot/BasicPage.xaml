@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShareTheSpot.BasicPage">
+    
+    <ContentPage.Content>
+        <StackLayout x:Name="MasterLayout">
+
+            <StackLayout x:Name="LogoStack" VerticalOptions="FillAndExpand">
+                <Label x:Name="lbl_NoInternet" HorizontalTextAlignment="Center" TextColor="White" BackgroundColor="Red" />
+            </StackLayout>
+
+            <StackLayout x:Name="LoginEntriesStack" VerticalOptions="StartAndExpand">
+                <StackLayout.Padding>
+                    <OnIdiom x:TypeArguments="Thickness">
+                        <OnIdiom.Phone>40,0,40,0</OnIdiom.Phone>
+                        <OnIdiom.Tablet>140,150,140,0</OnIdiom.Tablet>
+                    </OnIdiom>
+                </StackLayout.Padding>
+
+                <ActivityIndicator x:Name="ActivitySpinner" Color="Red" IsRunning="True" />
+
+                <Button x:Name="signin" Text="Login" Margin="0,20,0,10" Clicked="GoToLogin" Style="{StaticResource buttonStyle}" />
+                <Button x:Name="signup" Text="Sign up" Clicked="GoToSignup" Style="{StaticResource buttonStyle}" />
+                <Label Text="or" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+                <Button x:Name="signinwithgoogle" 
+                    Text="Login With Google" 
+                    Margin="0,0,0,10" 
+                    BackgroundColor="#ff3333"
+                    Clicked="GoToLoginThroughGoogle" 
+                    Style="{StaticResource buttonStyle}">
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource" 
+                                iOS="googleIcon.png"
+                                Android="googleIcon.png"/>
+                    </Button.Image>
+                </Button>
+                <Button x:Name="signinwithfacebook"
+                    Text="Login With Facebook" 
+                    BackgroundColor="#4267b2" 
+                    Clicked="GoToLoginThroughFacebook" 
+                    Style="{StaticResource buttonStyle}">
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource" 
+                                iOS="facebookIcon.png"
+                                Android="facebookIcon.png"/>
+                    </Button.Image>
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
