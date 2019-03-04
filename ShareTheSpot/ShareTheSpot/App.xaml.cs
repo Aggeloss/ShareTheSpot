@@ -25,6 +25,8 @@ namespace ShareTheSpot
 
         public App()
         {
+            DependencyService.Register<IDisplayMap>();
+
             InitializeComponent();
 
             //MainPage = new BasicPage();
