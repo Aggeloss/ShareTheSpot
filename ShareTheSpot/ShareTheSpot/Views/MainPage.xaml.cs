@@ -20,6 +20,8 @@ namespace ShareTheSpot.Views
             MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
         }
 
+        //Here you can add new menu pages..
+
         public async Task NavigateFromMenu(int id)
         {
             if (!MenuPages.ContainsKey(id))
@@ -27,14 +29,17 @@ namespace ShareTheSpot.Views
                 switch (id)
                 {
                     case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                        MenuPages.Add(id, new NavigationPage(new ItemsPage())); //Loads items' page
                         break;
                     case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        MenuPages.Add(id, new NavigationPage(new AboutPage())); //Loads about page
+                        break;
+                    case (int)MenuItemType.Profile:
+                        MenuPages.Add(id, new NavigationPage(new ProfilePage())); //Loads profile
                         break;
                 }
             }
-
+            
             var newPage = MenuPages[id];
 
             if (newPage != null && Detail != newPage)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ShareTheSpot.Models;
+using Xamarin.Forms;
 
 namespace ShareTheSpot.Services
 {
@@ -13,20 +14,27 @@ namespace ShareTheSpot.Services
         public MockDataStore()
         {
             items = new List<Item>();
+
             var mockItems = new List<Item>
             {
-                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description="This is an item description." },
-                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description="This is an item description." },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "First item", image = GetImageAccordingToDevicePlatform("AUEB.jpg"), Description ="This is an item description." },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", image = GetImageAccordingToDevicePlatform("AUEB.jpg"), Description="This is an item description." },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", image = GetImageAccordingToDevicePlatform("AUEB.jpg"), Description="This is an item description." },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", image = GetImageAccordingToDevicePlatform("AUEB.jpg"), Description="This is an item description." },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", image = GetImageAccordingToDevicePlatform("AUEB.jpg"), Description="This is an item description." },
+                new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", image = GetImageAccordingToDevicePlatform("AUEB.jpg"), Description="This is an item description." },
             };
 
             foreach (var item in mockItems)
             {
                 items.Add(item);
             }
+        }
+
+        private ImageSource GetImageAccordingToDevicePlatform(string imgUrl)
+        {
+            return Device.RuntimePlatform == Device.Android ? ImageSource.FromFile(imgUrl) :
+                ImageSource.FromFile("Images/" + imgUrl);
         }
 
         public async Task<bool> AddItemAsync(Item item)

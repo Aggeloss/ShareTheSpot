@@ -36,20 +36,23 @@ namespace ShareTheSpot
 
         private void SetMainPage()
         {
-            MainPage = new NavigationPage(new BasicPage());
+            //MainPage = new NavigationPage(new MainPage());
             
-            /*if (!string.IsNullOrEmpty(Settings.AccessToken))
+            if (!string.IsNullOrEmpty(Settings.AccessToken))
             {
-                MainPage = new BasicPage();
+                Console.WriteLine("Testtt_1");
+                MainPage = new MainPage();
             }
             else if (!string.IsNullOrEmpty(Settings.Username) && !string.IsNullOrEmpty(Settings.Password))
             {
+                Console.WriteLine("Testtt_2");
                 MainPage = new NavigationPage(new LoginPage());
             }
             else
             {
+                Console.WriteLine("Testtt_3");
                 MainPage = new NavigationPage(new BasicPage());
-            }*/
+            }
         }
 
         protected override void OnStart()

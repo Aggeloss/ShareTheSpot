@@ -1,6 +1,8 @@
 ﻿using System;
-
+using Android.Content;
+using Android.Graphics;
 using ShareTheSpot.Models;
+using Xamarin.Forms;
 
 namespace ShareTheSpot.ViewModels
 {

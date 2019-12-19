@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using ShareTheSpot.Helpers;
+
 namespace ShareTheSpot.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -19,7 +21,9 @@ namespace ShareTheSpot.Views
             menuItems = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" }
+                new HomeMenuItem {Id = MenuItemType.About, Title="About" },
+                new HomeMenuItem {Id = MenuItemType.Profile, Title="Profile" },
+                new HomeMenuItem {Id = MenuItemType.Logout, Title = "Logout" }
             };
 
             ListViewMenu.ItemsSource = menuItems;
@@ -31,8 +35,24 @@ namespace ShareTheSpot.Views
                     return;
 
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
+
+                if (id == (int)MenuItemType.Logout)
+                {
+                    LogOut();
+                    return;
+                }
+
                 await RootPage.NavigateFromMenu(id);
             };
+        }
+
+        void LogOut()
+        {
+            Settings.AccessToken = null;
+            Settings.Username = null;
+            Settings.Password = null;
+
+            Application.Current.MainPage = new NavigationPage(new BasicPage());
         }
     }
 }

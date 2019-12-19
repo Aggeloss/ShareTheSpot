@@ -47,6 +47,7 @@ namespace ShareTheSpot.Views
             }*/
 
             var users = await App.RestService.GetUsers();
+
             await DisplayAlert("Test", "Testingg => " + users[2].Value.ToString() + " @token => " + users[2].Key, "Ok");
             var check = false;
 
@@ -58,6 +59,7 @@ namespace ShareTheSpot.Views
                     Settings.AccessToken = user_firebase_db.Key;
                 }
             }
+
             //User usertest = dbUser.FirstOrDefault<User>;
 
             if (user.checkInformation()) //&& name == user.Username

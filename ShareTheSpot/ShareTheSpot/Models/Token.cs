@@ -13,7 +13,7 @@ namespace ShareTheSpot.Models
         public int expire_in { set; get; }
 
         public Token() { }
-
+        
         public string ToString()
         {
             return "access_token: " + this.access_token + " || error_description: " + this.error_description + " || expire_date: " + this.expire_date

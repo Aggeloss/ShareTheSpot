@@ -45,7 +45,7 @@ namespace ShareTheSpot.Models
             }
         }
 
-        public ICommand RegisterCommand
+        /*public ICommand RegisterCommand
         {
             get
             {
@@ -84,7 +84,7 @@ namespace ShareTheSpot.Models
                     Settings.AccessToken = accesstoken.access_token;
                 });
             }
-        }
+        }*/
 
         public string ToString()
         {
